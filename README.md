@@ -36,6 +36,7 @@ pip install visdom
 - [CUHK Face Sketch FERET Database (CUFSF)](http://mmlab.ie.cuhk.edu.hk/archive/cufsf/)
 
 ### Training
+make sure the data folder has subfolders trainA, trainB, valA, valB, testA, testB
 
 ```bash
 python PS2MAN.py --dataroot 'data/cuhkdata_augmented' --ckpt_path 'ckpt'
