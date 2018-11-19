@@ -1,6 +1,8 @@
 # PhotoSketchMAN
 Code for paper "High-Quality Facial Photo-Sketch Synthesis Using Multi-Adversarial Networks"
 
+Lidan Wang, [Vishwanath Singagi](http://www.vishwanathsindagi.com/), [Vishal M. Patel](https://engineering.jhu.edu/vpatel36/)
+
 [Paper Link](https://arxiv.org/abs/1710.10182)
 
 If you use this code for your research, please cite our paper
