@@ -46,5 +46,8 @@ pip install visdom
 [DualGAN](https://github.com/duxingren14/DualGAN): DualGAN: Unsupervised Dual Learning for Image-to-Image Translation
 
 ## Acknowledgments
-Code is modified based on 
-[CycleGAN](https://github.com/junyanz/CycleGAN): Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks  
+This code is modified based on:
+
+[CycleGAN](https://github.com/junyanz/CycleGAN): Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks
+
+We thank the authors for their great work.  
