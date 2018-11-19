@@ -1,5 +1,5 @@
 # PhotoSketchMAN
-## High-Quality Facial Photo-Sketch Synthesis Using Multi-Adversarial Networks"
+## High-Quality Facial Photo-Sketch Synthesis Using Multi-Adversarial Networks
 
 Lidan Wang, [Vishwanath Singagi](http://www.vishwanathsindagi.com/), [Vishal M. Patel](https://engineering.jhu.edu/vpatel36/)
 
@@ -17,6 +17,27 @@ If you use this code for your research, please cite our paper
   organization={IEEE}
 }
 ```
+
+## Prerequisites
+- Linux
+- Python 2 or Python 3
+- NVIDIA GPU + CUDA CuDNN
+
+## Getting Started
+### Installation
+- Install PyTorch and dependencies from http://pytorch.org/
+- Install Torch vision from the source.
+- Install python libraries [visdom](https://github.com/facebookresearch/visdom).
+```bash
+pip install visdom
+```
+### Datasets
+- [CUHK Face Sketch Database (CUFS)](http://mmlab.ie.cuhk.edu.hk/archive/facesketch.html)
+- [CUHK Face Sketch FERET Database (CUFSF)](http://mmlab.ie.cuhk.edu.hk/archive/cufsf/)
+
+### Training
+
+
 
 
 ## Related Projects
