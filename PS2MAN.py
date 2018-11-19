@@ -23,7 +23,7 @@ from util import AvgMeter, ImagePool
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--dataroot', default='/media/lidan/ssd/lidan/data/photo_sketch/cuhkdata_augmented',
+parser.add_argument('--dataroot', default='',
                          help='path to images (should have subfolders trainA, trainB, valA, valB, testA, testB)')
 parser.add_argument('--batchSize', type=int, default=1, help='input batch size')
 parser.add_argument('--loadSize', type=int, default=256, help='scale images to this size')
@@ -36,13 +36,7 @@ parser.add_argument('--which_model_netD', type=str, default='basic', help='selec
 parser.add_argument('--which_model_netG', type=str, default='resnet_9blocks', help='selects model to use for netG')
 parser.add_argument('--n_layers_D', type=int, default=3, help='only used if which_model_netD==n_layers')
 parser.add_argument('--gpu_ids', type=str, default='0', help='gpu ids: e.g. 0  0,1,2, 0,2. use -1 for CPU')
-parser.add_argument('--name', type=str, default='experiment_name',
-                         help='name of the experiment. It decides where to store samples and models')
-parser.add_argument('--model', type=str, default='cycle_gan',
-                         help='chooses which model to use. cycle_gan, pix2pix, test')
-parser.add_argument('--which_direction', type=str, default='AtoB', help='AtoB or BtoA')
 parser.add_argument('--nThreads', default=1, type=int, help='# threads for loading data')
-parser.add_argument('--checkpoints_dir', type=str, default='./checkpoints', help='models are saved here')
 parser.add_argument('--norm', type=str, default='instance', help='instance normalization or batch normalization')
 parser.add_argument('--serial_batches', action='store_true',
                          help='if true, takes images in order to make batches, otherwise takes them randomly')
@@ -52,8 +46,6 @@ parser.add_argument('--val_display_id', type=int, default=10, help='window id of
 parser.add_argument('--display_port', type=int, default=8097, help='visdom port of the web display')
 parser.add_argument('--display_single_pane_ncols', type=int, default=4,
                          help='if positive, display all images in a single visdom web panel with certain number of images per row.')
-parser.add_argument('--identity', type=float, default=0.0,
-                         help='use identity mapping. Setting identity other than 1 has an effect of scaling the weight of the identity mapping loss. For example, if the weight of the identity loss should be 10 times smaller than the weight of the reconstruction loss, please set optidentity = 0.1')
 parser.add_argument('--use_dropout', action='store_true', help='use dropout for the generator')
 parser.add_argument('--max_dataset_size', type=int, default=float("inf"),
                          help='Maximum number of samples allowed per dataset. If the dataset directory contains more than max_dataset_size, only a subset is loaded.')
@@ -71,7 +63,7 @@ parser.add_argument('--niter_decay', type=int, default=300,
 parser.add_argument('--print_iter', type=int, default=50, help='frequency of showing training results on console')
 parser.add_argument('--display_iter', type=int, default=50, help='frequency of showing training results on console')
 parser.add_argument('--save_iter', type=int, default=100, help='frequency of showing training results on console')
-parser.add_argument('--ckpt_path', default = '/media/lidan/ssd/lidan/ckpt/psman_original_eta1_mu07_lambda10')
+parser.add_argument('--ckpt_path', default = '')
 
 
 opt = parser.parse_args()
@@ -531,10 +523,8 @@ def test():
 
         # print Apath
 
-        inputAimg = input_A[:, 0:3, :, :]
-        # inputAseg = input_A[:,3,:,:]
-        inputBimg = input_B[:, 0:3, :, :]
-        # inputBseg = input_B[:, 3, :, :]
+        inputAimg = input_A
+        inputBimg = input_B
 
         real_A = Variable(inputAimg).cuda()
 
@@ -547,8 +537,8 @@ def test():
         fake_A64, fake_A128, fake_A = GB(real_B)
         rec_B64, rec_B128, rec_B = GA(fake_A)
 
-        A256 = util.get_current_visuals(real_A[:, 0:3, :, :], fake_B[:, 0:3, :, :], rec_A, real_B[:, 0:3, :, :])
-        B256 = util.get_current_visuals(real_B[:, 0:3, :, :], fake_A[:, 0:3, :, :], rec_B, real_A[:, 0:3, :, :])
+        A256 = util.get_current_visuals(real_A, fake_B, rec_A, real_B)
+        B256 = util.get_current_visuals(real_B, fake_A, rec_B, real_A)
         val_visual.display_current_results(A256, iter, winid=10)
         val_visual.display_current_results(B256, iter, winid=15)
         break
