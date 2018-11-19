@@ -75,11 +75,11 @@ val_visual = Visualizer(opt.val_display_id,'val',5)
 if not os.path.exists(opt.ckpt_path):
     os.makedirs(opt.ckpt_path)
 
-opt.pahse = 'val'
 data_loader = CreateDataLoader(opt)
 dataset = data_loader.load_data()
 dataset_size = len(data_loader)
 
+opt.pahse = 'val'
 val_data_loader = CreateDataLoader(opt)
 val_dataset = val_data_loader.load_data()
 
