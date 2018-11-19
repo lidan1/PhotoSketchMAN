@@ -37,7 +37,9 @@ pip install visdom
 
 ### Training
 
-
+```bash
+python PS2MAN.py --dataroot 'data/cuhkdata_augmented' --ckpt_path 'ckpt'
+```
 
 
 ## Related Projects
