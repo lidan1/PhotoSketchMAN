@@ -17,3 +17,13 @@ If you use this code for your research, please cite our paper
   organization={IEEE}
 }
 ```
+
+
+## Related Projects
+[CycleGAN](https://github.com/junyanz/CycleGAN): Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks  
+[pix2pix](https://github.com/phillipi/pix2pix): Image-to-image translation with conditional adversarial nets  
+[DualGAN](https://github.com/duxingren14/DualGAN): DualGAN: Unsupervised Dual Learning for Image-to-Image Translation
+
+## Acknowledgments
+Code is modified based on 
+[CycleGAN](https://github.com/junyanz/CycleGAN): Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks  
